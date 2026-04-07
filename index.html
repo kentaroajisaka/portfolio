@@ -3,395 +3,751 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kentaro Ajisaka - AI Agent Developer Portfolio</title>
+  <title>Kentaro Ajisaka - AI Agent Developer</title>
+  <meta name="description" content="税理士事務所代表 x AIエージェント開発者。MFクラウド会計連携・法令MCP・資金繰り表自動生成。">
   <style>
     :root {
-      --bg: #0a0a0a;
-      --surface: #141414;
-      --border: #222;
-      --text: #e5e5e5;
-      --text-muted: #888;
-      --accent: #3b82f6;
-      --accent-dim: #1e3a5f;
-      --green: #22c55e;
+      --purple: #533afd;
+      --purple-hover: #4434d4;
+      --navy: #061b31;
+      --label: #273951;
+      --body: #64748d;
+      --border: #e5edf5;
+      --white: #ffffff;
+      --brand-dark: #1c1e54;
+      --ruby: #ea2261;
+      --magenta: #f96bee;
+      --green: #15be53;
+      --green-text: #108c3d;
+      --shadow-blue: rgba(50,50,93,0.25);
+      --shadow-black: rgba(0,0,0,0.1);
     }
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans JP', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.7;
+      font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Noto Sans JP', sans-serif;
+      background: var(--white);
+      color: var(--navy);
+      line-height: 1.4;
       -webkit-font-smoothing: antialiased;
     }
 
-    /* Header */
-    header {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 80px 24px 40px;
-    }
-    header h1 {
-      font-size: 2rem;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      margin-bottom: 8px;
-    }
-    header .subtitle {
-      color: var(--text-muted);
-      font-size: 1.05rem;
-    }
-    header .links {
-      margin-top: 16px;
-      display: flex;
-      gap: 16px;
-      flex-wrap: wrap;
-    }
-    header .links a {
-      color: var(--accent);
-      text-decoration: none;
-      font-size: 0.9rem;
-    }
-    header .links a:hover { text-decoration: underline; }
-
-    /* Section */
-    section {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 0 24px 60px;
-    }
-    section h2 {
-      font-size: 1.1rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--text-muted);
-      margin-bottom: 24px;
-      padding-bottom: 8px;
+    /* ── Nav ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
     }
-
-    /* Project cards */
-    .project {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 28px;
-      margin-bottom: 20px;
-      transition: border-color 0.2s;
-    }
-    .project:hover {
-      border-color: var(--accent-dim);
-    }
-    .project h3 {
-      font-size: 1.2rem;
-      font-weight: 600;
-      margin-bottom: 4px;
-    }
-    .project .tags {
+    nav .inner {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 14px 24px;
       display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-      margin: 10px 0 14px;
+      align-items: center;
+      justify-content: space-between;
     }
-    .project .tag {
-      background: var(--accent-dim);
-      color: var(--accent);
-      font-size: 0.75rem;
-      font-weight: 500;
-      padding: 3px 10px;
-      border-radius: 999px;
+    nav .logo svg {
+      height: 22px;
+      width: auto;
     }
-    .project p {
-      color: var(--text-muted);
-      font-size: 0.95rem;
-      margin-bottom: 8px;
+    nav .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
     }
-    .project ul {
-      color: var(--text-muted);
-      font-size: 0.92rem;
-      padding-left: 20px;
+    nav .nav-links a {
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--navy);
+      text-decoration: none;
     }
-    .project ul li { margin-bottom: 4px; }
-    .project .highlight {
-      color: var(--text);
+    nav .nav-links a:hover { color: var(--purple); }
+    nav .cta-btn {
+      background: var(--purple);
+      color: var(--white);
+      font-size: 14px;
+      font-weight: 400;
+      padding: 8px 16px;
+      border-radius: 4px;
+      text-decoration: none;
+      transition: background 0.2s;
     }
+    nav .cta-btn:hover { background: var(--purple-hover); }
 
-    /* Stats */
-    .stats {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 16px;
-      margin-bottom: 40px;
-    }
-    .stat {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 24px;
+    /* ── Hero ── */
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 120px 24px 100px;
       text-align: center;
     }
-    .stat .number {
-      font-size: 2rem;
-      font-weight: 700;
-      color: var(--accent);
+    .hero-video {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      opacity: 0.06;
+      pointer-events: none;
     }
-    .stat .label {
-      font-size: 0.85rem;
-      color: var(--text-muted);
+    .hero-content {
+      position: relative;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .hero h1 {
+      font-size: 56px;
+      font-weight: 300;
+      letter-spacing: -1.4px;
+      line-height: 1.03;
+      color: var(--navy);
+      margin-bottom: 20px;
+    }
+    .hero .lead {
+      font-size: 20px;
+      font-weight: 300;
+      color: var(--body);
+      line-height: 1.5;
+      max-width: 600px;
+      margin: 0 auto 32px;
+    }
+    .hero .badge {
+      display: inline-block;
+      background: rgba(21,190,83,0.15);
+      color: var(--green-text);
+      font-size: 13px;
+      font-weight: 400;
+      padding: 4px 12px;
+      border-radius: 4px;
+      border: 1px solid rgba(21,190,83,0.3);
+      margin-bottom: 24px;
+    }
+    .hero-buttons {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+    }
+    .hero-buttons .btn-primary {
+      background: var(--purple);
+      color: var(--white);
+      font-size: 16px;
+      font-weight: 400;
+      padding: 10px 24px;
+      border-radius: 4px;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .hero-buttons .btn-primary:hover { background: var(--purple-hover); }
+    .hero-buttons .btn-ghost {
+      background: transparent;
+      color: var(--purple);
+      font-size: 16px;
+      font-weight: 400;
+      padding: 10px 24px;
+      border-radius: 4px;
+      border: 1px solid #b9b9f9;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .hero-buttons .btn-ghost:hover { background: rgba(83,58,253,0.05); }
+
+    /* ── Sections ── */
+    .section {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 80px 24px;
+    }
+    .section-label {
+      font-size: 13px;
+      font-weight: 400;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--purple);
+      margin-bottom: 12px;
+    }
+    .section h2 {
+      font-size: 48px;
+      font-weight: 300;
+      letter-spacing: -0.96px;
+      line-height: 1.15;
+      color: var(--navy);
+      margin-bottom: 16px;
+    }
+    .section .section-desc {
+      font-size: 18px;
+      font-weight: 300;
+      color: var(--body);
+      line-height: 1.5;
+      max-width: 640px;
+      margin-bottom: 48px;
+    }
+
+    /* ── Stats ── */
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      margin-bottom: 80px;
+    }
+    .stat-card {
+      text-align: center;
+      padding: 32px 16px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      box-shadow: var(--shadow-blue) 0px 30px 45px -30px, var(--shadow-black) 0px 18px 36px -18px;
+    }
+    .stat-card .num {
+      font-size: 48px;
+      font-weight: 300;
+      letter-spacing: -0.96px;
+      color: var(--navy);
+    }
+    .stat-card .num.small {
+      font-size: 20px;
+      letter-spacing: 0;
+    }
+    .stat-card .lbl {
+      font-size: 14px;
+      color: var(--body);
       margin-top: 4px;
     }
 
-    /* Architecture */
-    .arch-diagram {
-      background: var(--surface);
+    /* ── Featured (CF highlight) ── */
+    .featured-block {
+      background: var(--brand-dark);
+      border-radius: 8px;
+      padding: 64px 48px;
+      margin-bottom: 80px;
+      color: var(--white);
+      position: relative;
+      overflow: hidden;
+    }
+    .featured-block::before {
+      content: '';
+      position: absolute;
+      top: -60%; right: -20%;
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(83,58,253,0.3) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .featured-block .section-label { color: #b9b9f9; }
+    .featured-block h3 {
+      font-size: 32px;
+      font-weight: 300;
+      letter-spacing: -0.64px;
+      line-height: 1.1;
+      margin-bottom: 8px;
+      position: relative;
+    }
+    .featured-block .sub {
+      font-size: 18px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 36px;
+      max-width: 600px;
+      line-height: 1.5;
+      position: relative;
+    }
+    .featured-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      position: relative;
+    }
+    .featured-item {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 6px;
+      padding: 24px;
+    }
+    .featured-item h4 {
+      font-size: 16px;
+      font-weight: 400;
+      margin-bottom: 8px;
+      color: var(--white);
+    }
+    .featured-item p {
+      font-size: 14px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.5;
+    }
+    .vs-badge {
+      display: inline-block;
+      background: rgba(233,34,97,0.2);
+      color: #ff8ab5;
+      font-size: 12px;
+      font-weight: 400;
+      padding: 2px 8px;
+      border-radius: 4px;
+      border: 1px solid rgba(233,34,97,0.3);
+      margin-bottom: 16px;
+      position: relative;
+    }
+
+    /* ── Project cards ── */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-bottom: 24px;
+    }
+    .card {
+      background: var(--white);
       border: 1px solid var(--border);
-      border-radius: 12px;
+      border-radius: 6px;
       padding: 32px;
-      margin-bottom: 40px;
-      font-family: 'SF Mono', 'Fira Code', monospace;
-      font-size: 0.82rem;
-      color: var(--text-muted);
-      overflow-x: auto;
-      white-space: pre;
+      transition: box-shadow 0.2s;
+    }
+    .card:hover {
+      box-shadow: var(--shadow-blue) 0px 30px 45px -30px, var(--shadow-black) 0px 18px 36px -18px;
+    }
+    .card h3 {
+      font-size: 22px;
+      font-weight: 300;
+      letter-spacing: -0.22px;
+      color: var(--navy);
+      margin-bottom: 6px;
+    }
+    .card .tags {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin: 10px 0 14px;
+    }
+    .card .tag {
+      background: #f6f9fc;
+      color: var(--label);
+      font-size: 12px;
+      font-weight: 400;
+      padding: 2px 8px;
+      border-radius: 4px;
+      border: 1px solid var(--border);
+    }
+    .card p {
+      font-size: 15px;
+      font-weight: 300;
+      color: var(--body);
+      line-height: 1.5;
+      margin-bottom: 12px;
+    }
+    .card ul {
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--body);
+      padding-left: 18px;
+      line-height: 1.6;
+    }
+    .card ul strong { color: var(--navy); font-weight: 400; }
+
+    /* ── MCP grid ── */
+    .mcp-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+    }
+    .mcp-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 24px;
+      transition: box-shadow 0.2s;
+    }
+    .mcp-card:hover {
+      box-shadow: rgba(23,23,23,0.08) 0px 15px 35px 0px;
+    }
+    .mcp-card h4 {
+      font-size: 16px;
+      font-weight: 400;
+      color: var(--navy);
+      margin-bottom: 6px;
+    }
+    .mcp-card p {
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--body);
       line-height: 1.5;
     }
 
-    /* Footer */
+    /* ── Architecture ── */
+    .arch-container {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 40px;
+      box-shadow: rgba(23,23,23,0.08) 0px 15px 35px 0px;
+      overflow-x: auto;
+      margin-bottom: 48px;
+    }
+    .arch-container pre {
+      font-family: 'SF Mono', 'SFMono-Regular', 'Fira Code', monospace;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--label);
+      line-height: 1.6;
+      white-space: pre;
+    }
+
+    /* ── Philosophy (dark section) ── */
+    .dark-section {
+      background: var(--brand-dark);
+      padding: 80px 24px;
+    }
+    .dark-section .inner {
+      max-width: 1080px;
+      margin: 0 auto;
+    }
+    .dark-section .section-label { color: #b9b9f9; }
+    .dark-section h2 {
+      font-size: 32px;
+      font-weight: 300;
+      letter-spacing: -0.64px;
+      color: var(--white);
+      margin-bottom: 40px;
+    }
+    .philosophy-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+    .philosophy-item {
+      border-left: 2px solid var(--purple);
+      padding-left: 20px;
+    }
+    .philosophy-item h4 {
+      font-size: 16px;
+      font-weight: 400;
+      color: var(--white);
+      margin-bottom: 6px;
+    }
+    .philosophy-item p {
+      font-size: 14px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.5;
+    }
+
+    /* ── Footer ── */
     footer {
-      max-width: 900px;
+      max-width: 1080px;
       margin: 0 auto;
       padding: 40px 24px;
       border-top: 1px solid var(--border);
-      color: var(--text-muted);
-      font-size: 0.85rem;
-      text-align: center;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
+    footer p {
+      font-size: 13px;
+      color: var(--body);
+    }
+    footer a {
+      font-size: 13px;
+      color: var(--purple);
+      text-decoration: none;
+    }
+    footer a:hover { text-decoration: underline; }
 
-    @media (max-width: 600px) {
-      header { padding: 48px 16px 32px; }
-      header h1 { font-size: 1.5rem; }
-      section { padding: 0 16px 40px; }
-      .project { padding: 20px; }
-      .stats { grid-template-columns: 1fr 1fr; }
+    /* ── Responsive ── */
+    @media (max-width: 768px) {
+      .hero { padding: 80px 16px 60px; }
+      .hero h1 { font-size: 32px; letter-spacing: -0.64px; }
+      .hero .lead { font-size: 16px; }
+      .section { padding: 48px 16px; }
+      .section h2 { font-size: 32px; letter-spacing: -0.64px; }
+      .stats-row { grid-template-columns: 1fr 1fr; }
+      .featured-block { padding: 40px 24px; }
+      .featured-grid { grid-template-columns: 1fr; }
+      .projects-grid { grid-template-columns: 1fr; }
+      .philosophy-grid { grid-template-columns: 1fr; }
+      .hero-buttons { flex-direction: column; align-items: center; }
+      nav .nav-links a { display: none; }
+      footer { flex-direction: column; gap: 8px; text-align: center; }
     }
   </style>
 </head>
 <body>
 
-<header>
-  <h1>Kentaro Ajisaka</h1>
-  <p class="subtitle">税理士事務所 代表 / AI Agent Developer</p>
-  <p class="subtitle">会計・法務の実務知識 x AIエージェント開発で、士業のバックオフィスを自動化</p>
-  <div class="links">
-    <a href="https://github.com/kentaroajisaka">GitHub</a>
-  </div>
-</header>
-
-<section>
-  <h2>Overview</h2>
-  <div class="stats">
-    <div class="stat">
-      <div class="number">7</div>
-      <div class="label">業界特化 MCP Server</div>
-    </div>
-    <div class="stat">
-      <div class="number">728</div>
-      <div class="label">社福会計 勘定科目コード</div>
-    </div>
-    <div class="stat">
-      <div class="number">199</div>
-      <div class="label">科目マッピング定義</div>
-    </div>
-    <div class="stat">
-      <div class="number">実務運用中</div>
-      <div class="label">税理士事務所で日常利用</div>
+<!-- ── Nav ── -->
+<nav>
+  <div class="inner">
+    <a href="#" class="logo">
+      <svg viewBox="0 0 1524.1 316.1" xmlns="http://www.w3.org/2000/svg">
+        <path fill="#061b31" d="M151.9,151.9h-79.9l-22.9,57.7c-1.2,2.9-1.8,5.3-1.8,7.2,0,5,7.3,8.6,21.9,10.8,1.7.2,2.8.9,3.4,2,.6,1.1.9,2.3.9,3.8s-.2,3.3-.7,5.7c-6.5-.5-13.3-.9-20.4-1.3s-14.2-.5-21.1-.5-9.7.1-14.7.4c-5,.2-10.3.7-15.8,1.4-.5-1.9-.7-3.8-.7-5.7s.3-3.1.9-4.3c.6-1.2,1.8-1.9,3.8-2.2,7.4-1.2,13-2.7,16.7-4.5,3.7-1.8,6.4-4.6,8.1-8.4L115.7,6.1c1.7-4.1,3.9-6.1,6.8-6.1s2.4.2,4.3.7l86.7,214.3c1.4,3.3,4.7,6,9.7,7.9,5,1.9,9.9,3.2,14.7,3.9,1.4.5,2.6,1.1,3.4,2,.8.8,1.3,2.3,1.3,4.5s-.2,3.3-.7,5.7c-7.6-.5-15.2-.9-22.6-1.3-7.4-.4-14.3-.5-20.8-.5s-14.3.2-22.9.5-16.4.8-23.3,1.3c-.5-2.4-.7-4.3-.7-5.7,0-2.1.4-3.6,1.3-4.5.8-.8,1.6-1.3,2.3-1.3,6.2-1.2,11.2-2.6,15.1-4.1,3.8-1.6,5.7-3.9,5.7-7s-.5-3.2-1.4-5.4l-22.6-59.1ZM146.2,137.3l-33.3-87.8-34.8,87.8h68.1Z"/>
+        <path fill="#061b31" d="M309.6,29.7c0-4.8-1.7-8.2-5.2-10.2-3.5-2-10-3.8-19.5-5.2-2.4-.5-3.6-2.5-3.6-6.1s.2-3.3.7-5.7c7.6.5,15.6.9,23.8,1.3,8.2.4,15.1.5,20.6.5s12.6-.2,20.6-.5c8-.4,15.5-.8,22.4-1.3.5,2.4.7,4.3.7,5.7,0,3.8-1.3,5.9-3.9,6.1-8.8,1.4-14.9,3.2-18.1,5.2-3.2,2-4.8,5.4-4.8,10.2v155.2c0,16.7-.7,31.1-2.2,43s-4.5,22.8-9.3,32.4c-4.8,9.7-11.6,18.9-20.4,27.6-8.8,8.7-20.5,18.1-35.1,28.1-3.1-2.4-4.7-4.9-4.7-7.5s.6-3.1,1.8-4.3c13.1-12.7,22.5-25.6,28-38.7,5.5-13.1,8.2-28.1,8.2-44.8V29.7Z"/>
+        <path fill="#061b31" d="M482.3,212.1c0,4.8,1.7,8.1,5,9.9,3.3,1.8,9.6,3.6,18.6,5.6,2.4.5,3.6,2.4,3.6,5.7s-.2,3.3-.7,5.7c-7.4-.5-14.8-.9-22.2-1.3-7.4-.4-14.5-.5-21.1-.5s-13.6.2-21.3.5c-7.8.4-15.1.8-22,1.3-.5-2.4-.7-4.3-.7-5.7,0-3.3,1.2-5.3,3.6-5.7,9.1-1.7,15.3-3.5,18.6-5.4,3.3-1.9,5-5.3,5-10V29.7c0-4.8-1.7-8.2-5-10.2-3.3-2-9.6-3.8-18.6-5.2-1.4-.2-2.4-1-2.9-2.2-.5-1.2-.7-2.5-.7-3.9s.2-3.3.7-5.7c7.2.5,14.6.9,22.4,1.3,7.8.4,14.7.5,21,.5s12.8-.2,20.6-.5c7.8-.4,15.3-.8,22.8-1.3.5,2.4.7,4.3.7,5.7,0,3.6-1.2,5.6-3.6,6.1-9.1,1.4-15.3,3.2-18.6,5.2-3.3,2-5,5.4-5,10.2v182.4Z"/>
+        <path fill="#061b31" d="M713.8,60.6c-2.4.5-4.2.7-5.4.7-3.1,0-5.4-.6-6.8-1.8-1.4-1.2-2.5-2.5-3.2-3.9-6.2-13.6-13.6-23.5-22.2-29.7-8.6-6.2-20.3-9.3-35.1-9.3s-11.2.8-16.3,2.3c-5.1,1.6-9.6,3.8-13.4,6.8-3.8,3-6.9,6.6-9.1,10.9-2.3,4.3-3.4,9.1-3.4,14.3,0,11.2,4.7,20.4,14.2,27.6,9.4,7.2,23.3,14.5,41.7,21.9,22.9,9.1,39.8,19.2,50.7,30.3,10.9,11.1,16.3,24.8,16.3,41s-1.5,18.9-4.5,27.4c-3,8.5-7.6,15.9-14,22.2s-14.5,11.3-24.5,14.9c-10,3.6-22.1,5.4-36.2,5.4s-28.3-1.6-40.3-4.7c-12.1-3.1-22.3-7.2-30.6-12.2-.7-10-1.8-19.7-3.2-29s-3.1-18.6-5-28c1.7-.7,3.7-1.1,6.1-1.1s5.1.7,6.6,2c1.6,1.3,2.9,3.4,4.1,6.3,6,17.2,13.7,29.9,23.1,38,9.4,8.1,22.6,12.2,39.6,12.2s14.3-1.1,20.1-3.2c5.7-2.2,10.5-5.1,14.3-9,3.8-3.8,6.7-8.1,8.6-12.9,1.9-4.8,2.9-9.9,2.9-15.4,0-12.4-4.2-22.2-12.7-29.4-8.5-7.2-20.6-13.6-36.4-19.4-10.3-3.8-19.6-7.8-28-12-8.4-4.2-15.5-9-21.5-14.5-6-5.5-10.6-11.9-13.8-19.2-3.2-7.3-4.8-15.9-4.8-26s1.6-17.1,4.8-24.9c3.2-7.8,7.9-14.5,14-20.2,6.1-5.7,13.4-10.3,22-13.6,8.6-3.3,18.3-5,29-5s22,1.1,32.3,3.2c10.3,2.2,21.9,5.7,34.8,10.8.5,7.2,1.1,14.9,2,23.1.8,8.2,2,15.9,3.4,23.1Z"/>
+        <path fill="#061b31" d="M913.8,151.9h-79.9l-22.9,57.7c-1.2,2.9-1.8,5.3-1.8,7.2,0,5,7.3,8.6,21.9,10.8,1.7.2,2.8.9,3.4,2,.6,1.1.9,2.3.9,3.8s-.2,3.3-.7,5.7c-6.5-.5-13.3-.9-20.4-1.3s-14.2-.5-21.1-.5-9.7.1-14.7.4c-5,.2-10.3.7-15.8,1.4-.5-1.9-.7-3.8-.7-5.7s.3-3.1.9-4.3c.6-1.2,1.8-1.9,3.8-2.2,7.4-1.2,13-2.7,16.7-4.5,3.7-1.8,6.4-4.6,8.1-8.4L877.6,6.1c1.7-4.1,3.9-6.1,6.8-6.1s2.4.2,4.3.7l86.7,214.3c1.4,3.3,4.7,6,9.7,7.9,5,1.9,9.9,3.2,14.7,3.9,1.4.5,2.6,1.1,3.4,2,.8.8,1.3,2.3,1.3,4.5s-.2,3.3-.7,5.7c-7.6-.5-15.2-.9-22.6-1.3-7.4-.4-14.3-.5-20.8-.5s-14.3.2-22.9.5-16.4.8-23.3,1.3c-.5-2.4-.7-4.3-.7-5.7,0-2.1.4-3.6,1.3-4.5.8-.8,1.6-1.3,2.3-1.3,6.2-1.2,11.2-2.6,15.1-4.1,3.8-1.6,5.7-3.9,5.7-7s-.5-3.2-1.4-5.4l-22.6-59.1ZM908.1,137.3l-33.3-87.8-34.8,87.8h68.1Z"/>
+        <path fill="#061b31" d="M1101.6,121.5v90.7c0,4.8,1.5,8.1,4.5,10,3,1.9,8.5,3.7,16.7,5.4,1.2.2,2.1.7,2.9,1.4s1.1,2,1.1,3.9-.2,3.7-.7,6.1c-7.6-.5-14.9-.9-21.9-1.3-6.9-.4-13.4-.5-19.4-.5s-13.2.2-21,.5c-7.8.4-15.2.8-22.4,1.3-.5-2.4-.7-4.3-.7-5.7,0-3.3,1.2-5.3,3.6-5.7,9.1-1.9,15.3-3.8,18.6-5.6,3.3-1.8,5-5.1,5-9.9V29.7c0-4.8-1.7-8.2-5-10.2-3.3-2-9.6-3.8-18.6-5.2-2.4-.2-3.6-2.3-3.6-6.1s.2-3.3.7-5.7c6.9.5,14.3.9,22.2,1.3,7.9.4,14.8.5,20.8.5s13.1-.2,20.8-.5c7.6-.4,15.3-.8,22.9-1.3.5,2.4.7,4.3.7,5.7,0,3.6-1.2,5.6-3.6,6.1-9.1,1.4-15.3,3.2-18.6,5.2-3.3,2-5,5.4-5,10.2v86.7l83.1-82.4c1.4-1.4,2.7-3,3.8-4.8,1.1-1.8,1.6-3.6,1.6-5.6s-1.4-4.6-4.1-5.9c-2.7-1.3-6.4-2.3-10.9-3-2.4-.2-3.6-2.4-3.6-6.5s.2-3.3.7-5.7c6.9.5,13.9.9,20.8,1.3,6.9.4,13.3.5,19,.5s10.8-.2,16.7-.5c5.9-.4,11.2-.8,15.9-1.3.5,2.4.7,4.3.7,5.7,0,3.8-1.3,6.1-3.9,6.8-5.3,1-10.2,2.4-14.7,4.3-4.5,1.9-9,4.9-13.3,9l-80.6,79.6,97.8,105.4c4.1,4.3,8.1,7.4,12.2,9.3,4.1,1.9,9,3.3,14.7,4.3,2.9.2,4.3,2.3,4.3,6.1s-.2,3.7-.7,6.1c-7.4-.5-15.5-.9-24.4-1.3-8.8-.4-16.5-.5-22.9-.5s-13.7.2-21.1.5c-7.4.4-15.2.8-23.3,1.3-.5-2.4-.7-4.3-.7-5.7,0-3.6,1.3-5.5,3.9-5.7,10.8-.7,16.1-3.8,16.1-9.3s-1.2-4.8-3.6-7.2l-83.5-89.6Z"/>
+        <path fill="#061b31" d="M1433.4,151.9h-79.9l-22.9,57.7c-1.2,2.9-1.8,5.3-1.8,7.2,0,5,7.3,8.6,21.9,10.8,1.7.2,2.8.9,3.4,2,.6,1.1.9,2.3.9,3.8s-.2,3.3-.7,5.7c-6.5-.5-13.3-.9-20.4-1.3s-14.2-.5-21.1-.5-9.7.1-14.7.4c-5,.2-10.3.7-15.8,1.4-.5-1.9-.7-3.8-.7-5.7s.3-3.1.9-4.3c.6-1.2,1.8-1.9,3.8-2.2,7.4-1.2,13-2.7,16.7-4.5,3.7-1.8,6.4-4.6,8.1-8.4L1397.2,6.1c1.7-4.1,3.9-6.1,6.8-6.1s2.4.2,4.3.7l86.7,214.3c1.4,3.3,4.7,6,9.7,7.9,5,1.9,9.9,3.2,14.7,3.9,1.4.5,2.6,1.1,3.4,2,.8.8,1.3,2.3,1.3,4.5s-.2,3.3-.7,5.7c-7.6-.5-15.2-.9-22.6-1.3-7.4-.4-14.3-.5-20.8-.5s-14.3.2-22.9.5-16.4.8-23.3,1.3c-.5-2.4-.7-4.3-.7-5.7,0-2.1.4-3.6,1.3-4.5.8-.8,1.6-1.3,2.3-1.3,6.2-1.2,11.2-2.6,15.1-4.1,3.8-1.6,5.7-3.9,5.7-7s-.5-3.2-1.4-5.4l-22.6-59.1ZM1427.7,137.3l-33.3-87.8-34.8,87.8h68.1Z"/>
+      </svg>
+    </a>
+    <div class="nav-links">
+      <a href="#cashflow">Cash Flow</a>
+      <a href="#projects">Projects</a>
+      <a href="#mcp">MCP Servers</a>
+      <a href="https://github.com/kentaroajisaka" class="cta-btn">GitHub</a>
     </div>
   </div>
-</section>
+</nav>
 
-<section>
-  <h2>Architecture</h2>
-  <div class="arch-diagram">
-                        ┌─────────────────────────┐
-                        │     AI Agent (Claude)    │
-                        │  タスクに応じてMCPを選択・  │
-                        │  組み合わせて実行          │
-                        └────────┬────────────────┘
-                                 │
-            ┌────────────────────┼────────────────────┐
-            │                    │                    │
-   ┌────────▼────────┐  ┌───────▼────────┐  ┌───────▼────────┐
-   │  MF会計 MCP     │  │  法令 MCP群     │  │  経営分析 MCP   │
-   │  仕訳取得・登録   │  │  税法/労働法/   │  │  e-Stat統計     │
-   │  試算表・科目     │  │  介護/障害福祉/  │  │  gBizINFO法人   │
-   │  タグ操作        │  │  社福/建設/医療  │  │  賃金・人口     │
-   └────────┬────────┘  └───────┬────────┘  └───────┬────────┘
-            │                    │                    │
-   ┌────────▼────────┐  ┌───────▼────────┐  ┌───────▼────────┐
-   │ MF クラウド会計  │  │  e-Gov 法令API  │  │  e-Stat API    │
-   │ API             │  │  厚労省通達     │  │  gBizINFO API  │
-   └─────────────────┘  └────────────────┘  └────────────────┘</div>
-</section>
-
-<section>
-  <h2>Featured Projects</h2>
-
-  <div class="project">
-    <h3>実績資金繰り表 自動生成システム</h3>
-    <div class="tags">
-      <span class="tag">MF クラウド会計</span>
-      <span class="tag">GAS</span>
-      <span class="tag">MCP</span>
-      <span class="tag">AI Agent</span>
-    </div>
-    <p class="highlight">
-      マネーフォワード クラウド会計の仕訳データから、直接法の実績資金繰り表を自動生成。
-      銀行提出・融資審査に耐える品質のアウトプットを、AIエージェントが組み立てる。
+<!-- ── Hero ── -->
+<div class="hero">
+  <video class="hero-video" autoplay muted loop playsinline>
+    <source src="https://office-wing.net/site/wp-content/uploads/2025/10/mov.mp4" type="video/mp4">
+  </video>
+  <div class="hero-content">
+    <div class="badge">税理士事務所で実務運用中</div>
+    <h1>会計の実務知識で<br>AIエージェントを作る</h1>
+    <p class="lead">
+      マネーフォワード クラウド会計と深度連携するAIエージェント群を開発。
+      資金繰り表・社福会計変換・融資審査資料・法令検索を、実務の現場から。
     </p>
-    <ul>
-      <li><strong>AIマッピング</strong> ― 会社ごとに異なる科目体系・部門構成を、AIが分析して資金収支項目に自動マッピング。初期設定が圧倒的に簡単</li>
-      <li><strong>AI補正</strong> ― 車両買い替えの総額処理、相殺仕訳など特殊な仕訳でズレが出ても、AIが検知・補正</li>
-      <li><strong>タグエンジン</strong> ― MFの仕訳タグ機能を活用し、各仕訳行にCFコード（CF:D1:I01 等）を付与。非資金仕訳は自動除外</li>
-      <li><strong>社福CFからの流用</strong> ― 社福会計の資金収支計算書エンジンを企業会計に転用。「支払資金」→「現預金」に定義を狭めるだけで直接法CFが完成</li>
-    </ul>
-  </div>
-
-  <div class="project">
-    <h3>社会福祉法人 会計変換システム</h3>
-    <div class="tags">
-      <span class="tag">MF クラウド会計</span>
-      <span class="tag">社福会計基準</span>
-      <span class="tag">MF タグ API</span>
-      <span class="tag">GAS</span>
+    <div class="hero-buttons">
+      <a href="#cashflow" class="btn-primary">直接法 資金繰り表</a>
+      <a href="#projects" class="btn-ghost">全プロジェクトを見る</a>
     </div>
-    <p class="highlight">
-      マネーフォワード クラウド会計（企業会計）の仕訳データを、社会福祉法人会計基準の三表
-      （資金収支計算書・事業活動計算書・貸借対照表）に自動変換するシステム。
-    </p>
-    <ul>
-      <li><strong>728コード</strong>の社福勘定科目体系（原典Excel完全突合済み）</li>
-      <li><strong>199科目</strong>の企業会計→社福マッピング定義（補助科目レベル対応）</li>
-      <li>MFの仕訳タグをメタデータレイヤーとして活用（SFタグ方式）</li>
-      <li>部門フィルタ対応（拠点区分ごとの計算書生成）</li>
-      <li>繰入金・積立金の拠点間相殺処理</li>
-    </ul>
   </div>
+</div>
 
-  <div class="project">
-    <h3>融資審査資料 5点セット 自動生成</h3>
-    <div class="tags">
-      <span class="tag">MCP Prompts</span>
-      <span class="tag">MF クラウド会計</span>
-      <span class="tag">経営分析</span>
+<!-- ── Stats ── -->
+<div class="section">
+  <div class="stats-row">
+    <div class="stat-card">
+      <div class="num">7</div>
+      <div class="lbl">業界特化 MCP Server</div>
     </div>
-    <p class="highlight">
-      銀行員が稟議書にそのまま転用できる品質の融資申請書類を、AIエージェントが既存MCPを
-      組み合わせて自動生成する。keiei-mcp の MCP Prompts として実装。
-    </p>
-    <ul>
-      <li><strong>企業概要書</strong> ― gBizINFO + MF会計データから自動構成</li>
-      <li><strong>実体BS/PL</strong> ― 修正項目・非修正項目をエビデンス付きで一覧化（最重要）</li>
-      <li><strong>資金繰り表</strong> ― MF仕訳から直接法で自動生成</li>
-      <li><strong>返済計画</strong> ― 既存借入の返済スケジュール + 新規借入シミュレーション</li>
-      <li><strong>事業計画</strong> ― 将来CF付き、業界ベンチマーク（e-Stat賃金統計）との照合</li>
-    </ul>
-  </div>
-
-  <div class="project">
-    <h3>MFC Journal Analyst ― 仕訳分析エンジン</h3>
-    <div class="tags">
-      <span class="tag">MF クラウド会計</span>
-      <span class="tag">Claude Code Skill</span>
+    <div class="stat-card">
+      <div class="num">728</div>
+      <div class="lbl">社福 勘定科目コード</div>
     </div>
-    <p class="highlight">
-      MFクラウド会計の仕訳データを多角的に分析し、2種類のレポートを自動生成する
-      Claude Code スキル。
-    </p>
-    <ul>
-      <li><strong>総合分析レポート</strong> ― ビジネスモデル・主要取引先・定期取引・支払回収サイト・給与・部門分析</li>
-      <li><strong>入力担当者向け引き継ぎシート</strong> ― 記帳代行の8ステップに沿った引き継ぎ資料</li>
-      <li>実質取引先の自動抽出（補助科目→取引先→摘要の優先順位）</li>
-      <li>税込/税抜の自動判定</li>
-    </ul>
+    <div class="stat-card">
+      <div class="num">199</div>
+      <div class="lbl">科目マッピング定義</div>
+    </div>
+    <div class="stat-card">
+      <div class="num small">Production</div>
+      <div class="lbl">税理士事務所で日常利用</div>
+    </div>
   </div>
-</section>
+</div>
 
-<section>
-  <h2>Industry-Specific MCP Servers</h2>
-  <p style="color: var(--text-muted); margin-bottom: 24px;">
-    7つの業界に特化した法令・通達・報酬データのMCPサーバー群。
-    e-Gov法令API、厚労省通達、国税庁裁決事例等から一次情報を取得し、AIエージェントに正確な法的根拠を提供する。
+<!-- ── Featured: Cash Flow ── -->
+<div class="section" id="cashflow">
+  <div class="featured-block">
+    <p class="section-label">Featured</p>
+    <div class="vs-badge">既存会計ソフトでは不可能だった直接法を実現</div>
+    <h3>実績資金繰り表 自動生成</h3>
+    <p class="sub">
+      既存の会計ソフトが出力できるのは間接法の資金繰り表だけ。
+      本システムはMFクラウド会計連携において唯一、融資審査に耐える品質の
+      <strong style="color:#fff;">直接法</strong>の実績資金繰り表をスムーズに生成する。
+    </p>
+    <div class="featured-grid">
+      <div class="featured-item">
+        <h4>AIマッピング</h4>
+        <p>会社ごとに異なる科目体系・部門構成を、AIが分析して資金収支項目に自動マッピング。従来数時間かかった初期設定を数分に短縮。</p>
+      </div>
+      <div class="featured-item">
+        <h4>AI補正</h4>
+        <p>車両買い替えの総額処理、相殺仕訳、振替仕訳など特殊な仕訳でズレが出ても、AIが検知・補正。人手による突合作業を大幅に削減。</p>
+      </div>
+      <div class="featured-item">
+        <h4>タグエンジン</h4>
+        <p>MFの仕訳タグ機能を活用し、各仕訳行にCFコード（CF:D1:I01 等）を付与。現預金が動かない非資金仕訳は自動除外。</p>
+      </div>
+      <div class="featured-item">
+        <h4>社福CFからの転用</h4>
+        <p>社福会計の資金収支計算書エンジンを企業会計に転用。「支払資金」→「現預金」に定義を狭めるだけで直接法CFが完成する設計。</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── Projects ── -->
+<div class="section" id="projects">
+  <p class="section-label">Projects</p>
+  <h2>MF連携プロダクト</h2>
+  <p class="section-desc">
+    マネーフォワード クラウド会計のAPIを活用し、
+    会計事務所の実務を自動化するプロダクト群。
   </p>
+  <div class="projects-grid">
+    <div class="card">
+      <h3>社福会計 変換システム</h3>
+      <div class="tags">
+        <span class="tag">MF クラウド会計</span>
+        <span class="tag">社福会計基準</span>
+        <span class="tag">MF タグ API</span>
+      </div>
+      <p>
+        企業会計の仕訳データを社会福祉法人会計基準の三表
+        （資金収支計算書・事業活動計算書・貸借対照表）に自動変換。
+      </p>
+      <ul>
+        <li><strong>728コード</strong>の社福勘定科目体系（原典完全突合済み）</li>
+        <li><strong>199科目</strong>の企業会計→社福マッピング定義</li>
+        <li>MFタグをメタデータレイヤーとして活用</li>
+        <li>拠点区分ごとの計算書生成・繰入金相殺処理</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>融資審査資料 5点セット</h3>
+      <div class="tags">
+        <span class="tag">MCP Prompts</span>
+        <span class="tag">MF クラウド会計</span>
+        <span class="tag">経営分析</span>
+      </div>
+      <p>
+        銀行員が稟議書にそのまま転用できる品質の融資申請書類を、
+        AIエージェントが既存MCPを組み合わせて自動生成。
+      </p>
+      <ul>
+        <li><strong>企業概要書</strong> ― gBizINFO + MF会計データ</li>
+        <li><strong>実体BS/PL</strong> ― エビデンス付き修正一覧</li>
+        <li><strong>資金繰り表</strong> ― 直接法で自動生成</li>
+        <li><strong>返済計画 + 事業計画</strong> ― 将来CF付き</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>MFC Journal Analyst</h3>
+      <div class="tags">
+        <span class="tag">Claude Code Skill</span>
+        <span class="tag">MF クラウド会計</span>
+      </div>
+      <p>
+        仕訳データを多角的に分析し、総合分析レポートと
+        入力担当者向け引き継ぎシートを自動生成。
+      </p>
+      <ul>
+        <li>ビジネスモデル・主要取引先・定期取引分析</li>
+        <li>記帳代行の8ステップ引き継ぎ資料</li>
+        <li>実質取引先の自動抽出・税込/税抜自動判定</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>経営分析 MCP</h3>
+      <div class="tags">
+        <span class="tag">e-Stat API</span>
+        <span class="tag">gBizINFO API</span>
+      </div>
+      <p>
+        政府統計と法人情報を統合した経営データ基盤。
+        事業計画書の人件費根拠や競合分析に活用。
+      </p>
+      <ul>
+        <li>職種 x 都道府県の賃金統計（地域係数付き）</li>
+        <li>人口統計 ― 高齢化率・人口構成</li>
+        <li>gBizINFOから法人情報・競合調査</li>
+      </ul>
+    </div>
+  </div>
+</div>
 
-  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 16px;">
-    <div class="project" style="margin-bottom: 0;">
-      <h3 style="font-size: 1rem;">税法 MCP</h3>
+<!-- ── MCP Servers ── -->
+<div class="section" id="mcp">
+  <p class="section-label">Infrastructure</p>
+  <h2>7つの業界特化<br>MCP Server</h2>
+  <p class="section-desc">
+    e-Gov法令API、厚労省通達、国税庁裁決事例等から一次情報を取得し、
+    AIエージェントに正確な法的根拠を提供する。
+  </p>
+  <div class="mcp-grid">
+    <div class="mcp-card">
+      <h4>税法</h4>
       <p>法令・通達・裁決事例の原文取得。法人税・所得税・消費税・相続税等</p>
     </div>
-    <div class="project" style="margin-bottom: 0;">
-      <h3 style="font-size: 1rem;">労働法 MCP</h3>
+    <div class="mcp-card">
+      <h4>労働法</h4>
       <p>労基法・安衛法・社会保険法令。厚労省通達・JAISH通達に対応</p>
     </div>
-    <div class="project" style="margin-bottom: 0;">
-      <h3 style="font-size: 1rem;">介護保険 MCP</h3>
+    <div class="mcp-card">
+      <h4>介護保険</h4>
       <p>介護保険法・報酬告示・Q&A。サービスコード検索・限度額管理判定</p>
     </div>
-    <div class="project" style="margin-bottom: 0;">
-      <h3 style="font-size: 1rem;">障害福祉 MCP</h3>
+    <div class="mcp-card">
+      <h4>障害福祉</h4>
       <p>障害者総合支援法・児童福祉法。報酬コード検索・Q&A検索</p>
     </div>
-    <div class="project" style="margin-bottom: 0;">
-      <h3 style="font-size: 1rem;">社会福祉法人 MCP</h3>
-      <p>社福法・会計基準・指導監査ガイドライン。勘定科目725科目の構造化検索</p>
+    <div class="mcp-card">
+      <h4>社会福祉法人</h4>
+      <p>社福法・会計基準・指導監査ガイドライン。725科目の構造化検索</p>
     </div>
-    <div class="project" style="margin-bottom: 0;">
-      <h3 style="font-size: 1rem;">建設業 MCP</h3>
+    <div class="mcp-card">
+      <h4>建設業</h4>
       <p>建設業法・経審シミュレーション・入札情報・設計労務単価</p>
     </div>
-    <div class="project" style="margin-bottom: 0;">
-      <h3 style="font-size: 1rem;">医療 MCP</h3>
+    <div class="mcp-card">
+      <h4>医療</h4>
       <p>医療法・診療報酬点数検索・薬価検索・医療機関データ</p>
     </div>
   </div>
-</section>
+</div>
 
-<section>
-  <h2>経営分析 MCP (keiei-mcp)</h2>
-  <div class="project">
-    <h3>e-Stat + gBizINFO 連携の経営データ基盤</h3>
-    <div class="tags">
-      <span class="tag">e-Stat API</span>
-      <span class="tag">gBizINFO API</span>
-      <span class="tag">賃金構造基本統計</span>
+<!-- ── Architecture ── -->
+<div class="section">
+  <p class="section-label">Architecture</p>
+  <h2>設計思想</h2>
+  <p class="section-desc">
+    単体MCPをAIエージェントが組み合わせる。1つのことをうまくやるサーバーの集合体。
+  </p>
+  <div class="arch-container">
+    <pre>
+                        +---------------------------+
+                        |     AI Agent (Claude)      |
+                        |  Task -> MCP selection     |
+                        |  -> Combine & Execute      |
+                        +------------+--------------+
+                                     |
+            +------------------------+------------------------+
+            |                        |                        |
+   +--------v--------+     +--------v--------+     +--------v--------+
+   |  MF Accounting  |     |  Legal MCP x7   |     |  Analytics MCP  |
+   |  MCP            |     |  Tax / Labor /  |     |  e-Stat stats   |
+   |  Journals, TB   |     |  Nursing care / |     |  gBizINFO corp  |
+   |  Tags, Accounts |     |  Welfare / etc. |     |  Wages, Demo    |
+   +--------+--------+     +--------+--------+     +--------+--------+
+            |                        |                        |
+   +--------v--------+     +--------v--------+     +--------v--------+
+   | MF Cloud API    |     | e-Gov API       |     | e-Stat API      |
+   |                 |     | MHLW / NTA      |     | gBizINFO API    |
+   +-----------------+     +-----------------+     +-----------------+</pre>
+  </div>
+</div>
+
+<!-- ── Philosophy (dark section) ── -->
+<div class="dark-section">
+  <div class="inner">
+    <p class="section-label">Philosophy</p>
+    <h2>なぜAIエージェントで作るのか</h2>
+    <div class="philosophy-grid">
+      <div class="philosophy-item">
+        <h4>実務起点の設計</h4>
+        <p>税理士事務所で毎日使うツールとして開発。実際の顧問先データで検証済み。机上の空論ではない。</p>
+      </div>
+      <div class="philosophy-item">
+        <h4>一次情報の徹底</h4>
+        <p>法令MCPは全てe-Gov API等から原文を取得。AIの幻覚（ハルシネーション）を構造的に防止する。</p>
+      </div>
+      <div class="philosophy-item">
+        <h4>MFタグ = メタデータレイヤー</h4>
+        <p>仕訳タグを汎用メタデータとして活用。社福会計変換・資金繰り表・将来的にはPJ管理や管理会計にも展開可能。</p>
+      </div>
+      <div class="philosophy-item">
+        <h4>AIが会社ごとの違いを吸収</h4>
+        <p>完全自動化ではなく、AIが科目マッピング提案・特殊仕訳補正を担当。汎用性と精度を両立する設計。</p>
+      </div>
     </div>
-    <ul>
-      <li><strong>賃金データ</strong> ― 職種 x 都道府県の賃金統計（地域係数算出付き）</li>
-      <li><strong>人口統計</strong> ― 地域の高齢化率・人口構成（診療圏分析・市場分析に）</li>
-      <li><strong>法人情報</strong> ― gBizINFOから競合事業者調査・法人詳細取得</li>
-      <li><strong>事業計画書作成支援</strong> ― 人件費計画の根拠データ提供、業界ベンチマーク照合</li>
-    </ul>
   </div>
-</section>
+</div>
 
-<section>
-  <h2>Design Philosophy</h2>
-  <div class="project">
-    <h3>単体MCP x AIエージェント = 無限の組み合わせ</h3>
-    <p class="highlight">
-      個々のMCPサーバーは「1つのことをうまくやる」に徹し、
-      AIエージェントがタスクに応じて最適な組み合わせを選択・実行する。
-    </p>
-    <ul>
-      <li><strong>実務起点の設計</strong> ― 税理士事務所で毎日使うツールとして開発。机上の空論ではなく、実際の顧問先データで検証済み</li>
-      <li><strong>一次情報の徹底</strong> ― 法令MCPは全てe-Gov API等から原文を取得。AIの幻覚（ハルシネーション）を構造的に防止</li>
-      <li><strong>MFタグをメタデータレイヤーに</strong> ― MFクラウド会計の仕訳タグ機能を活用し、社福会計変換・資金繰り表・将来的にはPJ管理や管理会計にも展開可能なプラットフォーム構想</li>
-      <li><strong>AIが補完する設計</strong> ― 完全自動化ではなく、AIが科目マッピングの提案・特殊仕訳の補正・レポート生成を担当。会社ごとの違いをAIが吸収するから、汎用性と精度を両立</li>
-    </ul>
-  </div>
-</section>
-
+<!-- ── Footer ── -->
 <footer>
   <p>Kentaro Ajisaka / kentaro@office-wing.net</p>
+  <a href="https://github.com/kentaroajisaka">github.com/kentaroajisaka</a>
 </footer>
 
 </body>
