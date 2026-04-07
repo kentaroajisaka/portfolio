@@ -343,6 +343,157 @@
     }
     .card ul strong { color: var(--navy); font-weight: 400; }
 
+    /* ── Comparison table ── */
+    .compare-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      border-radius: 6px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      margin-bottom: 48px;
+      box-shadow: var(--shadow-blue) 0px 30px 45px -30px, var(--shadow-black) 0px 18px 36px -18px;
+    }
+    .compare-table thead th {
+      background: var(--navy);
+      color: var(--white);
+      font-size: 13px;
+      font-weight: 400;
+      padding: 14px 16px;
+      text-align: left;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    .compare-table thead th:last-child {
+      background: var(--purple);
+    }
+    .compare-table tbody td {
+      font-size: 13px;
+      font-weight: 300;
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--border);
+      color: var(--body);
+      vertical-align: top;
+    }
+    .compare-table tbody tr:last-child td { border-bottom: none; }
+    .compare-table tbody td:first-child {
+      font-weight: 400;
+      color: var(--navy);
+      background: #f8fafc;
+      width: 140px;
+    }
+    .compare-table tbody td:last-child {
+      background: rgba(83,58,253,0.03);
+      color: var(--navy);
+      font-weight: 400;
+    }
+    .compare-table .badge-fail {
+      display: inline-block;
+      background: rgba(234,34,97,0.1);
+      color: #c41952;
+      font-size: 11px;
+      padding: 1px 6px;
+      border-radius: 4px;
+      border: 1px solid rgba(234,34,97,0.2);
+    }
+    .compare-table .badge-warn {
+      display: inline-block;
+      background: rgba(155,104,41,0.1);
+      color: #9b6829;
+      font-size: 11px;
+      padding: 1px 6px;
+      border-radius: 4px;
+      border: 1px solid rgba(155,104,41,0.2);
+    }
+    .compare-table .badge-ok {
+      display: inline-block;
+      background: rgba(21,190,83,0.15);
+      color: var(--green-text);
+      font-size: 11px;
+      padding: 1px 6px;
+      border-radius: 4px;
+      border: 1px solid rgba(21,190,83,0.3);
+    }
+
+    /* ── Spreadsheet mockup ── */
+    .ss-mockup {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      overflow: hidden;
+      box-shadow: var(--shadow-blue) 0px 30px 45px -30px, var(--shadow-black) 0px 18px 36px -18px;
+      margin-bottom: 48px;
+    }
+    .ss-toolbar {
+      background: #f1f3f5;
+      border-bottom: 1px solid var(--border);
+      padding: 8px 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .ss-dot { width: 10px; height: 10px; border-radius: 50%; }
+    .ss-dot.r { background: #ff5f57; }
+    .ss-dot.y { background: #febc2e; }
+    .ss-dot.g { background: #28c840; }
+    .ss-title {
+      font-size: 12px;
+      color: var(--body);
+      margin-left: 12px;
+    }
+    .ss-grid {
+      display: grid;
+      grid-template-columns: 220px 1fr 1fr 1fr;
+      font-size: 13px;
+      font-weight: 300;
+    }
+    .ss-grid .ss-cell {
+      padding: 8px 12px;
+      border-bottom: 1px solid #f0f0f0;
+      border-right: 1px solid #f0f0f0;
+      color: var(--body);
+    }
+    .ss-grid .ss-cell:last-child { border-right: none; }
+    .ss-grid .ss-header {
+      background: #f8fafc;
+      font-weight: 400;
+      color: var(--navy);
+      font-size: 12px;
+      border-bottom: 1px solid var(--border);
+    }
+    .ss-grid .ss-row-label {
+      background: #fafbfc;
+      color: var(--navy);
+      font-weight: 400;
+    }
+    .ss-grid .ss-section-header {
+      background: var(--navy);
+      color: var(--white);
+      font-weight: 400;
+      font-size: 12px;
+      grid-column: 1 / -1;
+      padding: 6px 12px;
+    }
+    .ss-grid .ss-subtotal {
+      background: #f0f4ff;
+      font-weight: 400;
+      color: var(--navy);
+    }
+    .ss-grid .ss-total {
+      background: rgba(83,58,253,0.08);
+      font-weight: 500;
+      color: var(--purple);
+    }
+    .ss-grid .ss-num {
+      text-align: right;
+      font-variant-numeric: tabular-nums;
+    }
+    .ss-grid .ss-tag {
+      font-family: 'SF Mono', monospace;
+      font-size: 10px;
+      color: var(--purple);
+      opacity: 0.7;
+    }
+
     /* ── MCP grid ── */
     .mcp-grid {
       display: grid;
@@ -565,6 +716,190 @@
       </div>
     </div>
   </div>
+</div>
+
+<!-- ── Comparison Table ── -->
+<div class="section">
+  <p class="section-label">Why This Matters</p>
+  <h2>既存ツールとの比較</h2>
+  <p class="section-desc">
+    既存の会計ソフトは複合仕訳（振替伝票）で資金繰り表が破綻する。
+    本ツールは仕訳の行レベルでCFコードを付与するため、どんな仕訳形式でも正確に集計する。
+  </p>
+  <table class="compare-table">
+    <thead>
+      <tr>
+        <th></th>
+        <th>弥生会計</th>
+        <th>bixid</th>
+        <th>本ツール（AI + タグエンジン）</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>方式</td>
+        <td>直接法風（AE版のみ）</td>
+        <td>独自マッピング</td>
+        <td>直接法（仕訳行タグ方式）</td>
+      </tr>
+      <tr>
+        <td>複合仕訳</td>
+        <td><span class="badge-fail">諸口化してズレる</span><br>公式FAQに「単一仕訳に分解が必要」と明記</td>
+        <td><span class="badge-warn">マッピング推計</span><br>仕訳行レベルの制御なし</td>
+        <td><span class="badge-ok">仕訳行ごとにタグ付与</span><br>複合仕訳でも正確に集計</td>
+      </tr>
+      <tr>
+        <td>初期設定</td>
+        <td><span class="badge-fail">科目ごと手動設定</span><br>一括インポート不可</td>
+        <td><span class="badge-warn">手動マッピング</span></td>
+        <td><span class="badge-ok">AIが自動提案</span><br>科目名と補助科目から推論</td>
+      </tr>
+      <tr>
+        <td>ズレの補正</td>
+        <td><span class="badge-fail">仕訳を単一に分解</span><br>（実務的に不可能）</td>
+        <td><span class="badge-warn">毎月手動修正</span><br>ズレる前提の設計</td>
+        <td><span class="badge-ok">AIが検知・補正</span><br>特殊仕訳も自動対応</td>
+      </tr>
+      <tr>
+        <td>突合精度</td>
+        <td><span class="badge-fail">合わないことが多い</span></td>
+        <td><span class="badge-warn">概算レベル</span></td>
+        <td><span class="badge-ok">試算表と一円単位で一致</span></td>
+      </tr>
+      <tr>
+        <td>MF会計連携</td>
+        <td>非対応</td>
+        <td>CSV取込</td>
+        <td><span class="badge-ok">API直接連携 + タグ書き戻し</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ── Spreadsheet Mockup ── -->
+<div class="section">
+  <p class="section-label">Output</p>
+  <h2>自動生成される<br>資金繰り表</h2>
+  <p class="section-desc">
+    MFクラウド会計の仕訳データからスプレッドシートに自動出力。
+    あとは自由に加工・提出できる。
+  </p>
+  <div class="ss-mockup">
+    <div class="ss-toolbar">
+      <div class="ss-dot r"></div>
+      <div class="ss-dot y"></div>
+      <div class="ss-dot g"></div>
+      <span class="ss-title">実績資金繰り表 ─ 株式会社サンプル</span>
+    </div>
+    <div class="ss-grid">
+      <!-- Header -->
+      <div class="ss-cell ss-header">項目</div>
+      <div class="ss-cell ss-header ss-num">4月</div>
+      <div class="ss-cell ss-header ss-num">5月</div>
+      <div class="ss-cell ss-header ss-num">6月</div>
+
+      <!-- 前月繰越 -->
+      <div class="ss-cell ss-row-label">前月繰越金</div>
+      <div class="ss-cell ss-num">12,450,000</div>
+      <div class="ss-cell ss-num">14,280,000</div>
+      <div class="ss-cell ss-num">11,950,000</div>
+
+      <!-- 経常収入 -->
+      <div class="ss-section-header">経常収入</div>
+      <div class="ss-cell ss-row-label">売掛金回収 <span class="ss-tag">I01</span></div>
+      <div class="ss-cell ss-num">8,500,000</div>
+      <div class="ss-cell ss-num">7,200,000</div>
+      <div class="ss-cell ss-num">9,100,000</div>
+
+      <div class="ss-cell ss-row-label">現金売上 <span class="ss-tag">I02</span></div>
+      <div class="ss-cell ss-num">350,000</div>
+      <div class="ss-cell ss-num">420,000</div>
+      <div class="ss-cell ss-num">380,000</div>
+
+      <div class="ss-cell ss-row-label">その他経常収入 <span class="ss-tag">I99</span></div>
+      <div class="ss-cell ss-num">50,000</div>
+      <div class="ss-cell ss-num">30,000</div>
+      <div class="ss-cell ss-num">45,000</div>
+
+      <div class="ss-cell ss-subtotal">経常収入計</div>
+      <div class="ss-cell ss-subtotal ss-num">8,900,000</div>
+      <div class="ss-cell ss-subtotal ss-num">7,650,000</div>
+      <div class="ss-cell ss-subtotal ss-num">9,525,000</div>
+
+      <!-- 経常支出 -->
+      <div class="ss-section-header">経常支出</div>
+      <div class="ss-cell ss-row-label">買掛金支払 <span class="ss-tag">O01</span></div>
+      <div class="ss-cell ss-num">3,200,000</div>
+      <div class="ss-cell ss-num">2,800,000</div>
+      <div class="ss-cell ss-num">3,500,000</div>
+
+      <div class="ss-cell ss-row-label">給与・賞与 <span class="ss-tag">O10</span></div>
+      <div class="ss-cell ss-num">2,100,000</div>
+      <div class="ss-cell ss-num">2,100,000</div>
+      <div class="ss-cell ss-num">2,100,000</div>
+
+      <div class="ss-cell ss-row-label">社会保険料 <span class="ss-tag">O11</span></div>
+      <div class="ss-cell ss-num">680,000</div>
+      <div class="ss-cell ss-num">680,000</div>
+      <div class="ss-cell ss-num">680,000</div>
+
+      <div class="ss-cell ss-row-label">家賃 <span class="ss-tag">O20</span></div>
+      <div class="ss-cell ss-num">450,000</div>
+      <div class="ss-cell ss-num">450,000</div>
+      <div class="ss-cell ss-num">450,000</div>
+
+      <div class="ss-cell ss-row-label">その他経常支出 <span class="ss-tag">O99</span></div>
+      <div class="ss-cell ss-num">540,000</div>
+      <div class="ss-cell ss-num">870,000</div>
+      <div class="ss-cell ss-num">620,000</div>
+
+      <div class="ss-cell ss-subtotal">経常支出計</div>
+      <div class="ss-cell ss-subtotal ss-num">6,970,000</div>
+      <div class="ss-cell ss-subtotal ss-num">6,900,000</div>
+      <div class="ss-cell ss-subtotal ss-num">7,350,000</div>
+
+      <!-- 経常収支 -->
+      <div class="ss-cell ss-total">経常収支差額</div>
+      <div class="ss-cell ss-total ss-num">1,930,000</div>
+      <div class="ss-cell ss-total ss-num">750,000</div>
+      <div class="ss-cell ss-total ss-num">2,175,000</div>
+
+      <!-- 経常外 -->
+      <div class="ss-section-header">経常外収支</div>
+      <div class="ss-cell ss-row-label">設備投資 <span class="ss-tag">EO01</span></div>
+      <div class="ss-cell ss-num">0</div>
+      <div class="ss-cell ss-num">-2,800,000</div>
+      <div class="ss-cell ss-num">0</div>
+
+      <div class="ss-cell ss-subtotal">経常外収支計</div>
+      <div class="ss-cell ss-subtotal ss-num">0</div>
+      <div class="ss-cell ss-subtotal ss-num">-2,800,000</div>
+      <div class="ss-cell ss-subtotal ss-num">0</div>
+
+      <!-- 財務 -->
+      <div class="ss-section-header">財務収支</div>
+      <div class="ss-cell ss-row-label">借入金返済 <span class="ss-tag">FO01</span></div>
+      <div class="ss-cell ss-num">-100,000</div>
+      <div class="ss-cell ss-num">-280,000</div>
+      <div class="ss-cell ss-num">-100,000</div>
+
+      <div class="ss-cell ss-subtotal">財務収支計</div>
+      <div class="ss-cell ss-subtotal ss-num">-100,000</div>
+      <div class="ss-cell ss-subtotal ss-num">-280,000</div>
+      <div class="ss-cell ss-subtotal ss-num">-100,000</div>
+
+      <!-- 翌月繰越 -->
+      <div class="ss-cell ss-total">翌月繰越金</div>
+      <div class="ss-cell ss-total ss-num">14,280,000</div>
+      <div class="ss-cell ss-total ss-num">11,950,000</div>
+      <div class="ss-cell ss-total ss-num">14,025,000</div>
+    </div>
+  </div>
+  <p style="font-size: 13px; color: var(--body); text-align: center;">
+    各行の <span style="font-family: 'SF Mono', monospace; font-size: 11px; color: var(--purple);">I01</span>
+    <span style="font-family: 'SF Mono', monospace; font-size: 11px; color: var(--purple);">O10</span> 等は
+    MF仕訳に付与されたCFタグコード。翌月繰越金はMF試算表の現預金残高と一円単位で一致する。
+  </p>
 </div>
 
 <!-- ── Projects ── -->
