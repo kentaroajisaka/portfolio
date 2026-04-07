@@ -89,7 +89,7 @@
       top: 0; left: 0;
       width: 100%; height: 100%;
       object-fit: cover;
-      opacity: 0.06;
+      opacity: 0.15;
       pointer-events: none;
     }
     .hero-content {
@@ -489,7 +489,7 @@
       <a href="#cashflow">Cash Flow</a>
       <a href="#projects">Projects</a>
       <a href="#mcp">MCP Servers</a>
-      <a href="https://github.com/kentaroajisaka" class="cta-btn">GitHub</a>
+      <a href="https://office-wing.net" class="cta-btn">office-wing.net</a>
     </div>
   </div>
 </nav>
@@ -694,27 +694,88 @@
   <p class="section-desc">
     単体MCPをAIエージェントが組み合わせる。1つのことをうまくやるサーバーの集合体。
   </p>
-  <div class="arch-container">
-    <pre>
-                        +---------------------------+
-                        |     AI Agent (Claude)      |
-                        |  Task -> MCP selection     |
-                        |  -> Combine & Execute      |
-                        +------------+--------------+
-                                     |
-            +------------------------+------------------------+
-            |                        |                        |
-   +--------v--------+     +--------v--------+     +--------v--------+
-   |  MF Accounting  |     |  Legal MCP x7   |     |  Analytics MCP  |
-   |  MCP            |     |  Tax / Labor /  |     |  e-Stat stats   |
-   |  Journals, TB   |     |  Nursing care / |     |  gBizINFO corp  |
-   |  Tags, Accounts |     |  Welfare / etc. |     |  Wages, Demo    |
-   +--------+--------+     +--------+--------+     +--------+--------+
-            |                        |                        |
-   +--------v--------+     +--------v--------+     +--------v--------+
-   | MF Cloud API    |     | e-Gov API       |     | e-Stat API      |
-   |                 |     | MHLW / NTA      |     | gBizINFO API    |
-   +-----------------+     +-----------------+     +-----------------+</pre>
+  <div class="arch-container" style="padding: 24px; text-align: center;">
+    <svg viewBox="0 0 900 460" xmlns="http://www.w3.org/2000/svg" style="max-width: 800px; width: 100%;">
+      <defs>
+        <filter id="shadow" x="-4%" y="-4%" width="108%" height="112%">
+          <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="rgba(50,50,93,0.18)"/>
+        </filter>
+        <linearGradient id="purpleGrad" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#533afd"/>
+          <stop offset="100%" stop-color="#7c6bff"/>
+        </linearGradient>
+        <linearGradient id="navyGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#0d253d"/>
+          <stop offset="100%" stop-color="#1c1e54"/>
+        </linearGradient>
+      </defs>
+
+      <!-- AI Agent (top) -->
+      <rect x="275" y="20" width="350" height="90" rx="8" fill="url(#purpleGrad)" filter="url(#shadow)"/>
+      <text x="450" y="52" text-anchor="middle" fill="#fff" font-size="16" font-weight="600" font-family="-apple-system,sans-serif">AI Agent</text>
+      <text x="450" y="74" text-anchor="middle" fill="rgba(255,255,255,0.8)" font-size="12" font-family="-apple-system,sans-serif">Task -> MCP selection</text>
+      <text x="450" y="92" text-anchor="middle" fill="rgba(255,255,255,0.8)" font-size="12" font-family="-apple-system,sans-serif">-> Combine & Execute</text>
+
+      <!-- Connecting lines from Agent to MCPs -->
+      <line x1="350" y1="110" x2="150" y2="180" stroke="#b9b9f9" stroke-width="2" stroke-dasharray="6,4"/>
+      <line x1="450" y1="110" x2="450" y2="180" stroke="#b9b9f9" stroke-width="2" stroke-dasharray="6,4"/>
+      <line x1="550" y1="110" x2="750" y2="180" stroke="#b9b9f9" stroke-width="2" stroke-dasharray="6,4"/>
+
+      <!-- Arrow heads -->
+      <polygon points="146,176 154,176 150,184" fill="#b9b9f9"/>
+      <polygon points="446,176 454,176 450,184" fill="#b9b9f9"/>
+      <polygon points="746,176 754,176 750,184" fill="#b9b9f9"/>
+
+      <!-- MCP Layer -->
+      <!-- MF Accounting MCP -->
+      <rect x="30" y="185" width="240" height="100" rx="6" fill="#fff" stroke="#e5edf5" stroke-width="1.5" filter="url(#shadow)"/>
+      <rect x="30" y="185" width="240" height="4" rx="6" fill="#533afd"/>
+      <text x="150" y="215" text-anchor="middle" fill="#061b31" font-size="14" font-weight="500" font-family="-apple-system,sans-serif">MF Accounting MCP</text>
+      <text x="150" y="237" text-anchor="middle" fill="#64748d" font-size="11" font-family="-apple-system,sans-serif">Journals / Trial Balance</text>
+      <text x="150" y="255" text-anchor="middle" fill="#64748d" font-size="11" font-family="-apple-system,sans-serif">Tags / Accounts</text>
+      <text x="150" y="273" text-anchor="middle" fill="#64748d" font-size="11" font-family="-apple-system,sans-serif">CF Mapping Engine</text>
+
+      <!-- Legal MCP -->
+      <rect x="330" y="185" width="240" height="100" rx="6" fill="#fff" stroke="#e5edf5" stroke-width="1.5" filter="url(#shadow)"/>
+      <rect x="330" y="185" width="240" height="4" rx="6" fill="#533afd"/>
+      <text x="450" y="215" text-anchor="middle" fill="#061b31" font-size="14" font-weight="500" font-family="-apple-system,sans-serif">Legal MCP x7</text>
+      <text x="450" y="237" text-anchor="middle" fill="#64748d" font-size="11" font-family="-apple-system,sans-serif">Tax / Labor / Nursing Care</text>
+      <text x="450" y="255" text-anchor="middle" fill="#64748d" font-size="11" font-family="-apple-system,sans-serif">Disability / Social Welfare</text>
+      <text x="450" y="273" text-anchor="middle" fill="#64748d" font-size="11" font-family="-apple-system,sans-serif">Construction / Medical</text>
+
+      <!-- Analytics MCP -->
+      <rect x="630" y="185" width="240" height="100" rx="6" fill="#fff" stroke="#e5edf5" stroke-width="1.5" filter="url(#shadow)"/>
+      <rect x="630" y="185" width="240" height="4" rx="6" fill="#533afd"/>
+      <text x="750" y="215" text-anchor="middle" fill="#061b31" font-size="14" font-weight="500" font-family="-apple-system,sans-serif">Analytics MCP</text>
+      <text x="750" y="237" text-anchor="middle" fill="#64748d" font-size="11" font-family="-apple-system,sans-serif">e-Stat Wage Statistics</text>
+      <text x="750" y="255" text-anchor="middle" fill="#64748d" font-size="11" font-family="-apple-system,sans-serif">gBizINFO Corporation</text>
+      <text x="750" y="273" text-anchor="middle" fill="#64748d" font-size="11" font-family="-apple-system,sans-serif">Demographics</text>
+
+      <!-- Lines to APIs -->
+      <line x1="150" y1="285" x2="150" y2="340" stroke="#e5edf5" stroke-width="1.5"/>
+      <line x1="450" y1="285" x2="450" y2="340" stroke="#e5edf5" stroke-width="1.5"/>
+      <line x1="750" y1="285" x2="750" y2="340" stroke="#e5edf5" stroke-width="1.5"/>
+
+      <!-- API Layer -->
+      <rect x="50" y="345" width="200" height="70" rx="6" fill="url(#navyGrad)" filter="url(#shadow)"/>
+      <text x="150" y="376" text-anchor="middle" fill="rgba(255,255,255,0.9)" font-size="13" font-weight="500" font-family="-apple-system,sans-serif">MF Cloud API</text>
+      <text x="150" y="396" text-anchor="middle" fill="rgba(255,255,255,0.55)" font-size="11" font-family="-apple-system,sans-serif">moneyforward.com</text>
+
+      <rect x="350" y="345" width="200" height="70" rx="6" fill="url(#navyGrad)" filter="url(#shadow)"/>
+      <text x="450" y="376" text-anchor="middle" fill="rgba(255,255,255,0.9)" font-size="13" font-weight="500" font-family="-apple-system,sans-serif">e-Gov / MHLW / NTA</text>
+      <text x="450" y="396" text-anchor="middle" fill="rgba(255,255,255,0.55)" font-size="11" font-family="-apple-system,sans-serif">Government APIs</text>
+
+      <rect x="650" y="345" width="200" height="70" rx="6" fill="url(#navyGrad)" filter="url(#shadow)"/>
+      <text x="750" y="376" text-anchor="middle" fill="rgba(255,255,255,0.9)" font-size="13" font-weight="500" font-family="-apple-system,sans-serif">e-Stat / gBizINFO</text>
+      <text x="750" y="396" text-anchor="middle" fill="rgba(255,255,255,0.55)" font-size="11" font-family="-apple-system,sans-serif">Statistics & Corp Data</text>
+
+      <!-- Labels -->
+      <text x="12" y="232" fill="#b9b9f9" font-size="10" font-weight="500" font-family="-apple-system,sans-serif" transform="rotate(-90,12,232)">MCP LAYER</text>
+      <text x="12" y="385" fill="#b9b9f9" font-size="10" font-weight="500" font-family="-apple-system,sans-serif" transform="rotate(-90,12,385)">DATA SOURCE</text>
+
+      <!-- Output arrows -->
+      <text x="450" y="450" text-anchor="middle" fill="#64748d" font-size="11" font-family="-apple-system,sans-serif">Cash Flow / Financial Reports / Legal Analysis / Business Plans</text>
+    </svg>
   </div>
 </div>
 
