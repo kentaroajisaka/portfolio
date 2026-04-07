@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kentaro Ajisaka - AI Agent Developer Portfolio</title>
+  <style>
+    :root {
+      --bg: #0a0a0a;
+      --surface: #141414;
+      --border: #222;
+      --text: #e5e5e5;
+      --text-muted: #888;
+      --accent: #3b82f6;
+      --accent-dim: #1e3a5f;
+      --green: #22c55e;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans JP', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Header */
+    header {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 80px 24px 40px;
+    }
+    header h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 8px;
+    }
+    header .subtitle {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+    }
+    header .links {
+      margin-top: 16px;
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    header .links a {
+      color: var(--accent);
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+    header .links a:hover { text-decoration: underline; }
+
+    /* Section */
+    section {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 24px 60px;
+    }
+    section h2 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      margin-bottom: 24px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    /* Project cards */
+    .project {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 28px;
+      margin-bottom: 20px;
+      transition: border-color 0.2s;
+    }
+    .project:hover {
+      border-color: var(--accent-dim);
+    }
+    .project h3 {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+    .project .tags {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin: 10px 0 14px;
+    }
+    .project .tag {
+      background: var(--accent-dim);
+      color: var(--accent);
+      font-size: 0.75rem;
+      font-weight: 500;
+      padding: 3px 10px;
+      border-radius: 999px;
+    }
+    .project p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 8px;
+    }
+    .project ul {
+      color: var(--text-muted);
+      font-size: 0.92rem;
+      padding-left: 20px;
+    }
+    .project ul li { margin-bottom: 4px; }
+    .project .highlight {
+      color: var(--text);
+    }
+
+    /* Stats */
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 16px;
+      margin-bottom: 40px;
+    }
+    .stat {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+      text-align: center;
+    }
+    .stat .number {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .stat .label {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    /* Architecture */
+    .arch-diagram {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 32px;
+      margin-bottom: 40px;
+      font-family: 'SF Mono', 'Fira Code', monospace;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      overflow-x: auto;
+      white-space: pre;
+      line-height: 1.5;
+    }
+
+    /* Footer */
+    footer {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 24px;
+      border-top: 1px solid var(--border);
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      text-align: center;
+    }
+
+    @media (max-width: 600px) {
+      header { padding: 48px 16px 32px; }
+      header h1 { font-size: 1.5rem; }
+      section { padding: 0 16px 40px; }
+      .project { padding: 20px; }
+      .stats { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Kentaro Ajisaka</h1>
+  <p class="subtitle">税理士事務所 代表 / AI Agent Developer</p>
+  <p class="subtitle">会計・法務の実務知識 x AIエージェント開発で、士業のバックオフィスを自動化</p>
+  <div class="links">
+    <a href="https://github.com/kentaroajisaka">GitHub</a>
+  </div>
+</header>
+
+<section>
+  <h2>Overview</h2>
+  <div class="stats">
+    <div class="stat">
+      <div class="number">7</div>
+      <div class="label">業界特化 MCP Server</div>
+    </div>
+    <div class="stat">
+      <div class="number">728</div>
+      <div class="label">社福会計 勘定科目コード</div>
+    </div>
+    <div class="stat">
+      <div class="number">199</div>
+      <div class="label">科目マッピング定義</div>
+    </div>
+    <div class="stat">
+      <div class="number">実務運用中</div>
+      <div class="label">税理士事務所で日常利用</div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Architecture</h2>
+  <div class="arch-diagram">
+                        ┌─────────────────────────┐
+                        │     AI Agent (Claude)    │
+                        │  タスクに応じてMCPを選択・  │
+                        │  組み合わせて実行          │
+                        └────────┬────────────────┘
+                                 │
+            ┌────────────────────┼────────────────────┐
+            │                    │                    │
+   ┌────────▼────────┐  ┌───────▼────────┐  ┌───────▼────────┐
+   │  MF会計 MCP     │  │  法令 MCP群     │  │  経営分析 MCP   │
+   │  仕訳取得・登録   │  │  税法/労働法/   │  │  e-Stat統計     │
+   │  試算表・科目     │  │  介護/障害福祉/  │  │  gBizINFO法人   │
+   │  タグ操作        │  │  社福/建設/医療  │  │  賃金・人口     │
+   └────────┬────────┘  └───────┬────────┘  └───────┬────────┘
+            │                    │                    │
+   ┌────────▼────────┐  ┌───────▼────────┐  ┌───────▼────────┐
+   │ MF クラウド会計  │  │  e-Gov 法令API  │  │  e-Stat API    │
+   │ API             │  │  厚労省通達     │  │  gBizINFO API  │
+   └─────────────────┘  └────────────────┘  └────────────────┘</div>
+</section>
+
+<section>
+  <h2>Featured Projects</h2>
+
+  <div class="project">
+    <h3>実績資金繰り表 自動生成システム</h3>
+    <div class="tags">
+      <span class="tag">MF クラウド会計</span>
+      <span class="tag">GAS</span>
+      <span class="tag">MCP</span>
+      <span class="tag">AI Agent</span>
+    </div>
+    <p class="highlight">
+      マネーフォワード クラウド会計の仕訳データから、直接法の実績資金繰り表を自動生成。
+      銀行提出・融資審査に耐える品質のアウトプットを、AIエージェントが組み立てる。
+    </p>
+    <ul>
+      <li><strong>AIマッピング</strong> ― 会社ごとに異なる科目体系・部門構成を、AIが分析して資金収支項目に自動マッピング。初期設定が圧倒的に簡単</li>
+      <li><strong>AI補正</strong> ― 車両買い替えの総額処理、相殺仕訳など特殊な仕訳でズレが出ても、AIが検知・補正</li>
+      <li><strong>タグエンジン</strong> ― MFの仕訳タグ機能を活用し、各仕訳行にCFコード（CF:D1:I01 等）を付与。非資金仕訳は自動除外</li>
+      <li><strong>社福CFからの流用</strong> ― 社福会計の資金収支計算書エンジンを企業会計に転用。「支払資金」→「現預金」に定義を狭めるだけで直接法CFが完成</li>
+    </ul>
+  </div>
+
+  <div class="project">
+    <h3>社会福祉法人 会計変換システム</h3>
+    <div class="tags">
+      <span class="tag">MF クラウド会計</span>
+      <span class="tag">社福会計基準</span>
+      <span class="tag">MF タグ API</span>
+      <span class="tag">GAS</span>
+    </div>
+    <p class="highlight">
+      マネーフォワード クラウド会計（企業会計）の仕訳データを、社会福祉法人会計基準の三表
+      （資金収支計算書・事業活動計算書・貸借対照表）に自動変換するシステム。
+    </p>
+    <ul>
+      <li><strong>728コード</strong>の社福勘定科目体系（原典Excel完全突合済み）</li>
+      <li><strong>199科目</strong>の企業会計→社福マッピング定義（補助科目レベル対応）</li>
+      <li>MFの仕訳タグをメタデータレイヤーとして活用（SFタグ方式）</li>
+      <li>部門フィルタ対応（拠点区分ごとの計算書生成）</li>
+      <li>繰入金・積立金の拠点間相殺処理</li>
+    </ul>
+  </div>
+
+  <div class="project">
+    <h3>融資審査資料 5点セット 自動生成</h3>
+    <div class="tags">
+      <span class="tag">MCP Prompts</span>
+      <span class="tag">MF クラウド会計</span>
+      <span class="tag">経営分析</span>
+    </div>
+    <p class="highlight">
+      銀行員が稟議書にそのまま転用できる品質の融資申請書類を、AIエージェントが既存MCPを
+      組み合わせて自動生成する。keiei-mcp の MCP Prompts として実装。
+    </p>
+    <ul>
+      <li><strong>企業概要書</strong> ― gBizINFO + MF会計データから自動構成</li>
+      <li><strong>実体BS/PL</strong> ― 修正項目・非修正項目をエビデンス付きで一覧化（最重要）</li>
+      <li><strong>資金繰り表</strong> ― MF仕訳から直接法で自動生成</li>
+      <li><strong>返済計画</strong> ― 既存借入の返済スケジュール + 新規借入シミュレーション</li>
+      <li><strong>事業計画</strong> ― 将来CF付き、業界ベンチマーク（e-Stat賃金統計）との照合</li>
+    </ul>
+  </div>
+
+  <div class="project">
+    <h3>MFC Journal Analyst ― 仕訳分析エンジン</h3>
+    <div class="tags">
+      <span class="tag">MF クラウド会計</span>
+      <span class="tag">Claude Code Skill</span>
+    </div>
+    <p class="highlight">
+      MFクラウド会計の仕訳データを多角的に分析し、2種類のレポートを自動生成する
+      Claude Code スキル。
+    </p>
+    <ul>
+      <li><strong>総合分析レポート</strong> ― ビジネスモデル・主要取引先・定期取引・支払回収サイト・給与・部門分析</li>
+      <li><strong>入力担当者向け引き継ぎシート</strong> ― 記帳代行の8ステップに沿った引き継ぎ資料</li>
+      <li>実質取引先の自動抽出（補助科目→取引先→摘要の優先順位）</li>
+      <li>税込/税抜の自動判定</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h2>Industry-Specific MCP Servers</h2>
+  <p style="color: var(--text-muted); margin-bottom: 24px;">
+    7つの業界に特化した法令・通達・報酬データのMCPサーバー群。
+    e-Gov法令API、厚労省通達、国税庁裁決事例等から一次情報を取得し、AIエージェントに正確な法的根拠を提供する。
+  </p>
+
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 16px;">
+    <div class="project" style="margin-bottom: 0;">
+      <h3 style="font-size: 1rem;">税法 MCP</h3>
+      <p>法令・通達・裁決事例の原文取得。法人税・所得税・消費税・相続税等</p>
+    </div>
+    <div class="project" style="margin-bottom: 0;">
+      <h3 style="font-size: 1rem;">労働法 MCP</h3>
+      <p>労基法・安衛法・社会保険法令。厚労省通達・JAISH通達に対応</p>
+    </div>
+    <div class="project" style="margin-bottom: 0;">
+      <h3 style="font-size: 1rem;">介護保険 MCP</h3>
+      <p>介護保険法・報酬告示・Q&A。サービスコード検索・限度額管理判定</p>
+    </div>
+    <div class="project" style="margin-bottom: 0;">
+      <h3 style="font-size: 1rem;">障害福祉 MCP</h3>
+      <p>障害者総合支援法・児童福祉法。報酬コード検索・Q&A検索</p>
+    </div>
+    <div class="project" style="margin-bottom: 0;">
+      <h3 style="font-size: 1rem;">社会福祉法人 MCP</h3>
+      <p>社福法・会計基準・指導監査ガイドライン。勘定科目725科目の構造化検索</p>
+    </div>
+    <div class="project" style="margin-bottom: 0;">
+      <h3 style="font-size: 1rem;">建設業 MCP</h3>
+      <p>建設業法・経審シミュレーション・入札情報・設計労務単価</p>
+    </div>
+    <div class="project" style="margin-bottom: 0;">
+      <h3 style="font-size: 1rem;">医療 MCP</h3>
+      <p>医療法・診療報酬点数検索・薬価検索・医療機関データ</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>経営分析 MCP (keiei-mcp)</h2>
+  <div class="project">
+    <h3>e-Stat + gBizINFO 連携の経営データ基盤</h3>
+    <div class="tags">
+      <span class="tag">e-Stat API</span>
+      <span class="tag">gBizINFO API</span>
+      <span class="tag">賃金構造基本統計</span>
+    </div>
+    <ul>
+      <li><strong>賃金データ</strong> ― 職種 x 都道府県の賃金統計（地域係数算出付き）</li>
+      <li><strong>人口統計</strong> ― 地域の高齢化率・人口構成（診療圏分析・市場分析に）</li>
+      <li><strong>法人情報</strong> ― gBizINFOから競合事業者調査・法人詳細取得</li>
+      <li><strong>事業計画書作成支援</strong> ― 人件費計画の根拠データ提供、業界ベンチマーク照合</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h2>Design Philosophy</h2>
+  <div class="project">
+    <h3>単体MCP x AIエージェント = 無限の組み合わせ</h3>
+    <p class="highlight">
+      個々のMCPサーバーは「1つのことをうまくやる」に徹し、
+      AIエージェントがタスクに応じて最適な組み合わせを選択・実行する。
+    </p>
+    <ul>
+      <li><strong>実務起点の設計</strong> ― 税理士事務所で毎日使うツールとして開発。机上の空論ではなく、実際の顧問先データで検証済み</li>
+      <li><strong>一次情報の徹底</strong> ― 法令MCPは全てe-Gov API等から原文を取得。AIの幻覚（ハルシネーション）を構造的に防止</li>
+      <li><strong>MFタグをメタデータレイヤーに</strong> ― MFクラウド会計の仕訳タグ機能を活用し、社福会計変換・資金繰り表・将来的にはPJ管理や管理会計にも展開可能なプラットフォーム構想</li>
+      <li><strong>AIが補完する設計</strong> ― 完全自動化ではなく、AIが科目マッピングの提案・特殊仕訳の補正・レポート生成を担当。会社ごとの違いをAIが吸収するから、汎用性と精度を両立</li>
+    </ul>
+  </div>
+</section>
+
+<footer>
+  <p>Kentaro Ajisaka / kentaro@office-wing.net</p>
+</footer>
+
+</body>
+</html>
